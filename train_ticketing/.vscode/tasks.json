@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build ticketing",
+      "type": "shell",
+      "command": "gcc",
+      "args": ["-g", "-O0", "-Wall", "-Wextra", "-o", "ticketing",
+               "src/main.c", "src/train.c", "src/segtree.c"],
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "build and run unit tests",
+      "type": "shell",
+      "command": "gcc -g -Wall -o test_train tests/test_train.c src/train.c src/segtree.c && gcc -O2 -Wall -o test_bench tests/test_bench.c src/segtree.c && ./test_train && ./test_bench",
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
